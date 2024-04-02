@@ -18,7 +18,6 @@ import {
   SignInSchema,
 } from '@/utils/validationSchema';
 import { Router } from 'express';
-import fileParser from '@/middleware/fileParser';
 
 const router = Router();
 
