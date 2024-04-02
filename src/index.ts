@@ -13,12 +13,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('src/public'));
+
 app.use('/auth', authRouter);
 app.use('/organization', organizationRouter);
 app.use('/worker', workerRouter);
 app.use('/connections', connectionsRouter);
 app.use('/request', requestHandler);
 app.use('/workspace', workspaceRouter);
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 const Port = process.env.PORT || 8989;
 app.listen(Port, () => {
