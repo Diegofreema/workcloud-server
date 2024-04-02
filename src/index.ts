@@ -10,11 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('src/public'));
 
-app.use('/auth', authRouter);
-
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+app.use('/auth', authRouter);
 
 const Port = process.env.PORT || 8989;
 app.listen(Port, () => {
