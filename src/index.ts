@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('src/public'));
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.status(201).json({ message: 'Welcome to Auth ts' });
 });
 app.use('/auth', authRouter);
 
