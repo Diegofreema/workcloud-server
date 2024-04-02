@@ -1,7 +1,7 @@
-import { CreateUser, SignInUser, VerifyUser } from '@/@types/user';
+import { SignInUser, VerifyUser } from '@/@types/user';
 import emailVerificationSchema from '@/models/emailVerificationSchema';
 import passwordResetToken from '@/models/passwordResetToken';
-import User, { UserDoc } from '@/models/user';
+import User from '@/models/user';
 import { generateToken } from '@/utils/helper';
 import {
   sendCallMail,
@@ -13,8 +13,7 @@ import 'dotenv/config';
 import { RequestHandler } from 'express';
 import { isValidObjectId } from 'mongoose';
 import crypto from 'crypto';
-import { RequestWithFiles } from '@/middleware/fileParser';
-import formidable from 'formidable';
+
 import cloudinary from '@/cloud';
 import { StreamChat } from 'stream-chat';
 
