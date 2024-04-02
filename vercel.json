@@ -1,1 +1,6 @@
-{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/src" }] }
+{
+  "version": 2,
+  "name": "workcloud",
+  "builds": [{ "src": "src/index.ts", "use": "@vercel/node" }],
+  "routes": [{ "src": "/src(.*)", "dest": "/index.ts" }]
+}
