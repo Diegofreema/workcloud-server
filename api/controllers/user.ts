@@ -29,12 +29,12 @@ export const create: RequestHandler = async (req: any, res) => {
   const { name, email, password, avatar } = req.body;
   console.log('name', name, 'email', email, 'password', password);
 
-  // const { secure_url, public_id } = await cloudinary.uploader.upload(avatar, {
-  //   width: 200,
-  //   height: 200,
-  //   crop: 'thumb',
-  //   gravity: 'faces',
-  // });
+  const { secure_url, public_id } = await cloudinary.uploader.upload(avatar, {
+    width: 200,
+    height: 200,
+    crop: 'thumb',
+    gravity: 'faces',
+  });
 
   const userExists = await User.findOne({ email: email });
   if (userExists) {
@@ -47,7 +47,10 @@ export const create: RequestHandler = async (req: any, res) => {
       name,
       email,
       password,
-      avatar,
+      avatar: {
+        url: secure_url,
+        public_id: public_id,
+      },
     });
 
     const streamToken = serverClient.createToken(user._id.toString());
@@ -62,7 +65,13 @@ export const create: RequestHandler = async (req: any, res) => {
     });
 
     return res.status(201).json({
-      user: { id: user._id, name, email, streamToken },
+      user: {
+        id: user._id,
+        name,
+        email,
+        streamToken,
+        avatar: user?.avatar?.url,
+      },
     });
   } catch (error: any) {
     console.log('Sign-in error', error);

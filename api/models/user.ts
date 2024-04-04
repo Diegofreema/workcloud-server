@@ -47,7 +47,9 @@ const userSchema = new Schema<UserDoc, {}, Methods>(
       default: false,
     },
     avatar: {
-      type: String,
+      type: Object,
+      url: String,
+      public_id: String,
     },
     tokens: [String],
     following: [
