@@ -29,12 +29,12 @@ export const create: RequestHandler = async (req: any, res) => {
   const { name, email, password, avatar } = req.body;
   console.log('name', name, 'email', email, 'password', password);
 
-  const { secure_url, public_id } = await cloudinary.uploader.upload(avatar, {
-    width: 200,
-    height: 200,
-    crop: 'thumb',
-    gravity: 'faces',
-  });
+  // const { secure_url, public_id } = await cloudinary.uploader.upload(avatar, {
+  //   width: 200,
+  //   height: 200,
+  //   crop: 'thumb',
+  //   gravity: 'faces',
+  // });
 
   const userExists = await User.findOne({ email: email });
   if (userExists) {
@@ -47,10 +47,7 @@ export const create: RequestHandler = async (req: any, res) => {
       name,
       email,
       password,
-      avatar: {
-        url: secure_url,
-        public_id: public_id,
-      },
+      avatar,
     });
 
     const streamToken = serverClient.createToken(user._id.toString());
