@@ -8,11 +8,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "rootDir": "./api",
+    "rootDir": "./",
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./api/*"]
+      "@/*": ["./*"]
     }
   }
 }

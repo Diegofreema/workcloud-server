@@ -1,7 +1,6 @@
 import express from 'express';
 
 import 'dotenv/config';
-
 import { create } from './controllers/user';
 
 const app = express();
