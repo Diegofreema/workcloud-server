@@ -12,7 +12,7 @@ export const create: RequestHandler = async (req: any, res) => {
   const { id } = req.body;
 
   try {
-    const streamToken = serverClient.createToken('hsbahbsfsdbfhsvdfhvshvfhgs');
+    const streamToken = serverClient.createToken(id);
     console.log({ streamToken });
 
     return res.status(201).json({

@@ -13,7 +13,7 @@ app.get('/home', (req, res) => {
   res.status(201).json({ message: 'Welcome to Auth ts file' });
 });
 
-app.get('/create-token', create);
+app.post('/create-token', create);
 
 const Port = process.env.PORT || 8989;
 app.listen(Port, () => {
