@@ -8,7 +8,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('src/public'));
 
-app.get('/', (req, res) => res.send('Express on Vercel'));
 app.get('/way', (req, res) => {
   res.status(201).json({ message: 'Welcome to Auth ts file' });
 });
